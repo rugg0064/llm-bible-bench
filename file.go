@@ -14,7 +14,7 @@ import (
 
 func getLLM() (*openai.LLM, error) {
 	// Replace this with your LLM url
-	llmURL := "http://172.29.80.1:1234/v1/"
+	llmURL := "http://localhost:1234/v1/"
 	llm, err := openai.New(openai.WithBaseURL(llmURL), openai.WithToken("lm-studio"))
 	if err != nil {
 		log.Error("openai.New failed", zap.Error(err))
@@ -114,10 +114,6 @@ func parseVerses(data string) []Verse {
 	verses := make([]Verse, 0, len(lines))
 
 	for _, line := range lines {
-		if strings.Split(line, "|")[0] != "Pe2" {
-			continue
-		}
-
 		log.Sugar().Debugf("Working on line %v", line)
 
 		parts := strings.Split(line, "|")
