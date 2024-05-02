@@ -28,3 +28,7 @@ It will also print CSV text that can be easily imported into excel and visualize
 See this example excel formatting of a test with llama3 on 2 Peter (11% accuracy)
 
 ![Example of visualized output from llama3 on 2 Peter](Example.png)
+
+## Contribution
+
+Contributions are welcome, please keep the code as simple as possible as this is meant to be a very quick and easy test to manage.
