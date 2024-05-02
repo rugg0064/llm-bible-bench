@@ -12,7 +12,7 @@ TODO: Switch to https://github.com/aruljohn/Bible-kjv
 * Install golang https://golang.org/
 * Open a terminal, clone this project, set it to active directory
 * Update packages with `go mod tidy`
-* Run the program with `go run file.go`
+* Run the program with `go run main.go`
 
 ## Configuration
 
