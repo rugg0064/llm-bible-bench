@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"os"
 	"strconv"
@@ -29,6 +30,19 @@ func buildPrompt(verse Verse) string {
 	return prompt
 }
 
+func saveResultsToFile(results []LLMTestResult) {
+	jsonData, err := json.Marshal(results)
+	if err != nil {
+		log.Error("json.Marshal failed", zap.Error(err))
+		return
+	}
+	err = os.WriteFile("data.json", jsonData, 0644)
+	if err != nil {
+		log.Error("os.WriteFile", zap.Error(err))
+		return
+	}
+}
+
 func main() {
 	llm, err := getLLM()
 	if err != nil {
@@ -48,6 +62,7 @@ func main() {
 	log.Info("Test Finished", zap.Any("Results", results))
 	log.Sugar().Infof("Accuracy: %v%%", getResultPercent(results)*100)
 	csvOutput(results)
+	saveResultsToFile(results)
 }
 
 func csvOutput(results []LLMTestResult) {
